@@ -9,6 +9,7 @@ const ContactForm = () => {
     type: "personal"
   });
   const { name, email, phone, type } = contact;
+  console.log(contact);
 
   const onChange = e => {
     setContact({
