@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import ContactContext from "../../context/contact/ContactContext";
+//import { SET_CURRENT } from "../../context/types";
 
 const ContactItem = ({ contact }) => {
+  //console.log(contact);
   const contactContext = useContext(ContactContext);
-  const handledelete = e => {
+  const handledelete = () => {
     contactContext.deleteContact(contact.id);
-    console.log(contact);
+    contactContext.clearCurrent();
+    //console.log(contact);
   };
   return (
     <div className="card bg-light">
@@ -42,7 +45,12 @@ const ContactItem = ({ contact }) => {
         )}
       </ul>
       <p>
-        <button className="btn btn-dark btn-sm">Edit</button>
+        <button
+          className="btn btn-dark btn-sm"
+          onClick={() => contactContext.setCurrent(contact)}
+        >
+          Edit
+        </button>
         <button className="btn btn-danger btn-sm" onClick={handledelete}>
           Delete
         </button>
