@@ -1,11 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import AlertContext from "../../context/alert/AlertContext";
+import AuthContext from "../../context/auth/AuthContext";
 
-const Login = () => {
+const Login = props => {
+  const authContext = useContext(AuthContext);
+  const alertContext = useContext(AlertContext);
+
+  const { setAlert } = alertContext;
+  const { login, clearErrors, isAuthenticated, error } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/");
+    }
+
+    if (error === "Invalid credentials") {
+      setAlert(error, "danger");
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
   const [user, setUser] = useState({
     email: "",
     password: ""
   });
+
+  const { email, password } = user;
 
   const onChange = e =>
     setUser({
@@ -15,7 +36,14 @@ const Login = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log("Register User");
+    if (email === "" || password === "") {
+      setAlert("Please fill in all fields", "danger");
+    } else {
+      login({
+        email,
+        password
+      });
+    }
   };
   return (
     <div className="form-container">
@@ -30,6 +58,7 @@ const Login = () => {
             name="email"
             value={user.email}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -39,6 +68,7 @@ const Login = () => {
             name="password"
             value={user.password}
             onChange={onChange}
+            required
           />
         </div>
 
