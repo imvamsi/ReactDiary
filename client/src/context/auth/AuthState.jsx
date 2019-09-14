@@ -4,15 +4,14 @@ import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
 
 import {
-  ADD_CONTACT,
-  DELETE_CONTACT,
-  SET_CURRENT,
-  CLEAR_CURRENT,
-  UPDATE_CONTACT,
-  FILTER_CONTACT,
-  CLEAR_FILTER,
-  SET_ALERT,
-  REMOVE_ALERT
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  USER_LOADED,
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT,
+  CLEAR_ERRORS
 } from "../types";
 
 const AuthState = props => {

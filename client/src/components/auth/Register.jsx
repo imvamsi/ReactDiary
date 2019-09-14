@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import AlertContext from "../../context/alert/AlertContext";
 const Register = () => {
+  const alertContext = useContext(AlertContext);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -16,7 +18,13 @@ const Register = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log("Register User");
+    if (user.name === "" || user.password === "" || user.email === "") {
+      alertContext.setAlert("Please fill out all fields", "danger");
+    } else if (user.password !== user.password2) {
+      alertContext.setAlert("passwords dont match", "danger");
+    } else {
+      console.log("register submit");
+    }
   };
   return (
     <div className="form-container">
@@ -31,6 +39,7 @@ const Register = () => {
             name="name"
             value={user.name}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -40,6 +49,7 @@ const Register = () => {
             name="email"
             value={user.email}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -49,6 +59,8 @@ const Register = () => {
             name="password"
             value={user.password}
             onChange={onChange}
+            required
+            minLength="6"
           />
         </div>
         <div className="form-group">
@@ -58,6 +70,8 @@ const Register = () => {
             name="password2"
             value={user.password2}
             onChange={onChange}
+            required
+            minLength="6"
           />
         </div>
         <input
