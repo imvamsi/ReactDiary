@@ -9,9 +9,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ContactState from "./context/contact/ContactState";
 import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alert/AlertState";
+import SetAuthToken from "./utils/SetAuthToken";
 import "./App.css";
 
 const App = () => {
+  if (localStorage.token) {
+    SetAuthToken(localStorage.token);
+  }
   return (
     <AuthState>
       <ContactState>
