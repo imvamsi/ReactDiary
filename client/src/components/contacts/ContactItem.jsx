@@ -7,7 +7,7 @@ const ContactItem = ({ contact }) => {
   //console.log(contact);
   const contactContext = useContext(ContactContext);
   const handledelete = () => {
-    contactContext.deleteContact(contact.id);
+    contactContext.deleteContact(contact._id);
     contactContext.clearCurrent();
     //console.log(contact);
   };
