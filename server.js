@@ -3,8 +3,6 @@ const connectDB = require("./config/db");
 const app = express();
 const path = require("path");
 
-//app.get("/", (req, res) => res.json({ msg: "welcome to the contact keeper" }));
-
 //connect to the database
 connectDB();
 
