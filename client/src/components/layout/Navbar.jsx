@@ -56,7 +56,7 @@ Navbar.propTypes = {
   icon: PropTypes.isRequired
 };
 Navbar.defaultProps = {
-  title: "Contact Keeper",
-  icon: "fas fa-id-card-alt"
+  title: "React Diary",
+  icon: "fas fa-book"
 };
 export default Navbar;
