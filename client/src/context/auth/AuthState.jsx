@@ -25,7 +25,8 @@ const AuthState = props => {
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   //Load user
-
+  /* Load the user from our backend so that we can authenticate the user
+   and access certain areas */
   const loadUser = async () => {
     //global header
 
