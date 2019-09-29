@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/website%20-live-%235c6ae6">  <img src ="https://img.shields.io/badge/contributor-0ne-yellowgreen"> 
+<img src="https://img.shields.io/badge/build%20-passing-%235c6ae6">  <img src ="https://img.shields.io/badge/contributor-0ne-yellowgreen"> 
 <img src="https://img.shields.io/badge/heroku-live-blue"> <img src="https://img.shields.io/badge/docker%20build-pending-red">
 
 # ReactDiary
